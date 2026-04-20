@@ -1,0 +1,3 @@
+[submodule "TestInput/ITI-test"]
+	path = TestInput/ITI-test
+	url = git@github.com:SvenMehlhop/ITI-test.git
