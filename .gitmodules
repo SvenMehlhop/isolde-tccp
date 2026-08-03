@@ -1,3 +1,6 @@
-[submodule "TestInput/ITI-test"]
-	path = TestInput/ITI-test
-	url = git@github.com:SvenMehlhop/ITI-test.git
+[submodule "TestbenchInput/ITI-test"]
+	path = TestbenchInput/ITI-test
+	url = https://github.com/SvenMehlhop/ITI-test.git
+[submodule "ip-card"]
+	path = ip-card
+	url = https://github.com/SvenMehlhop/ip-card.git
