@@ -1,0 +1,10 @@
+[main]
+output = "tip_tccp_label_test"
+freq = "10MHz"
+
+[[observer]]
+id = 0
+name = "platon_hw"
+sources = [
+    { contract = "../../../TestbenchInput/ITI-test/iti_tccp_label_test.s", dump = "../../../TestbenchInput/ITI-test/iti_tccp_label_test-bin.dump" }
+]

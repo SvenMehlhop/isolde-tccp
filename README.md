@@ -15,23 +15,27 @@ Implemented are the following contract types:
 | 0               | Periodic<br>event a occurs every [X, Y]           | ID         | ID         | a            | /            | X            | Y           |
 | 1               | Reaction<br>Whenever a occurs then b occurs within [X, Y] | ID         | ID         | a            | b            | X            | Y           |
 | 2               | Aging<br>Whenever a occurs then b has occurred [X,Y] before | ID         | ID         | a            | b            | X            | Y           |
-| 3               | Value d is within [X,Y] at timepoint [a, b]       | ID         | ID         | a            | b            | X            | Y           |
-| 4               | Value d is within [X,Y] from location/ PC a until b | ID         | ID         | a            | b            | X            | Y           |
+| 3               | Value is within [X,Y] at timepoint [a, b]       | ID         | ID         | a            | b            | X            | Y           |
+| 4               | Value is within [X,Y] from location/ PC a until b | ID         | ID         | a            | b            | X            | Y           |
 
 In the event of an input pattern in the form of "a;a;b" for Monitor Type 2. the 2nd "a" would be ignored.
 
 As shown in the following figure, the contract-based runtime monitoring approach consists of three interacting components:
 At its core, the Time Contract Co-Processor (TCCP) connects to two other components, the TCCP-Compiler and the observer interfaces. 
 The TCCP executes contract-based specifications in hardware and observes various event sources via an observer interface. The observers are minimalistic adapters to source data, like a RISC-V trace port to observe computational progress or a memory content observer. The TCCP monitors events according to its programmable configuration derived from contract specifications. These specifications are processed by the TCCP compiler, which generates a configuration program for the TCCP.
-<img src="docs/TCCP.png" alt="Architecture of the Time Contract Co‑Processor (TCCP)" />
+<img src="figures/tccp.png" alt="Architecture of the Time Contract Co‑Processor (TCCP)" />
 
 ## Simulation
-The [SystemC](SystemC/README.md) and [SystemVerilog](SystemVerilog/README.md) simulations are described and explained in their own READMEs.
+The [SystemC](SystemC/TCCP/README.md) and [SystemVerilog](SystemVeriolg/README.md) simulations are described and explained in their own READMEs.
 
 
 
 ## Testbench
-The TCCP IP is tested by exemplary output through the interfaces tip (Trace Ingress Port) and iti (Instruction Trace Interface), developed by SYSGO and an exemplary output of a brightness sensor. Iti is the further developed and renamed version of the tip, both are compliant to the Efficient Trace for RISC-V standard Version 2.0.2(https://github.com/riscv-non-isa/riscv-trace-spec/releases/download/v2.0.2/riscv-trace-spec-asciidoc.pdf), specifically:
+The TCCP IP is tested by exemplary output through the interfaces TIP (Trace Ingress Port) and ITI (Instruction Trace Interface), developed by SYSGO, as well as an exemplary output of a brightness sensor and the instruction traces of an AMR (Autonomous Mobile Robots) application. These testbenches are placed in the [TestbenchInput](TestbenchInput) directory. [evalLibrary](TestbenchInput/evalLibrary/) and [evalStreet](TestbenchInput/evalStreet/) are inheriting two traces of the same AMR application but within different environment simulations. [tip](TestbenchInput/tip) contains the TIP trace.
+The testbench based on the ITI is located in the [ITI-Test](ITI-Test) directory as a submodule, to allow an easier integration with further developments of the ITI interface.
+
+
+ITI is the further developed and renamed version of the TIP, both are compliant to the Efficient Trace for RISC-V standard Version 2.0.2(https://github.com/riscv-non-isa/riscv-trace-spec/releases/download/v2.0.2/riscv-trace-spec-asciidoc.pdf), specifically:
 - Chapter 4.1: Instruction Trace Interface Requirements
 
 - Chapter 4.2: Instruction Trace Interface
@@ -40,11 +44,18 @@ See also [git commit in cva6 repo](https://github.com/openhwgroup/cva6/commit/f3
 
 Since the TCCP is capable of observing and monitoring multiple domains and interfaces at the same time, the testbench is built to evaluate multiple different scenarios:  (1) each interface on its own, with the other deactivated (2) a combination of the interfaces 
 
+## TCCP-Compiler (TCCP-CO)
+The TCCP-Compiler is a command-line tool that converts timing contract specifications into configuration data for the Time Contract Co-Processor (TCCP). 
+The compiler is located in the [TCCP-CO](TCCP-CO) directory, a further description is located in the [TCCP-CO README](TCCP-CO/README.md).
+
 
 ## OFFIS in ISOLDE
 In this context, OFFIS cooperates with 38 other European partners and contributes to the safety and security part of the ISOLDE project. OFFIS develops an open-source, generic, and configurable contract-based timing monitoring co-processor. This co-processor monitors the safety/security related system behaviours at runtime, to guarantee the correct execution of these behaviours. Furthermore, OFFIS provides a compiler for initialization of the co-processor and configuration of the monitoring specifications. Finally, the results will be integrated with the other partners‘ components and presented in an automotive demonstrator.
 
 https://www.offis.de/en/offis/project/isolde.html
+
+## IP-Card
+The TCCP is part of the European Unified RISC-V IP Access Platform, see the [platform page](https://openhwgroup.github.io/uap/unified-access.html) and the [repository](https://github.com/openhwgroup/uap). Therefore, we provide and IP-Card for our SW-IP (TCCP-CO) and HW-IP (TCCP), see both cards as .json or .pdf in the [ip-card submodule](/ip-card/) in this repo.
 
 ##  Acknowledgement
 This activity has received funding from the Key Digital Technologies Joint Undertaking (KDT JU) under grant agreement No 877056. The JU receives support from the European Union’s Horizon 2020 research and innovation programme and Spain, Italy, Austria, Germany, Finland, Switzerland.
