@@ -1,0 +1,33 @@
+// ROS cluster – periodic heartbeat:
+Event 107 occurs every 30ms, 70ms at observer platon_ros
+
+// ROS cluster -> vel_pick: latency
+Whenever 107 occurs then 106 occurs within 0ms, 5ms at observer platon_ros
+
+// ROS vel_pick -> vel_refine: latency 
+Whenever 106 occurs then 109 occurs within 0ms, 3ms at observer platon_ros
+
+// ROS vel_refine -> icp: latency 
+Whenever 109 occurs then 101 occurs within 0ms, 25ms at observer platon_ros
+
+// ROS cluster -> core_total: end-to-end latency 
+Whenever 107 occurs then 108 occurs within 0ms, 10ms at observer platon_ros
+
+//Platon_HW – heartbeat: new RPM value 
+Event 10 occurs every 8ms, 12ms at observer platon_hw
+
+//Platon_HW – value range
+Value is within 0, 30 from PC 1 until 2 at observer platon_hw
+
+//Platon_HW – value range
+Value is within 2700, 3300 from PC 3 until 2 at observer platon_hw
+
+// Faulty ROS vel_pick -> vel_refine: tighter latency (max in 30s: 268us, limit: 200us)
+Whenever 106 occurs then 109 occurs within 0ms, 200us at observer platon_ros
+
+// Faulty ROS vel_refine -> icp: tighter latency (max in 30s: 4.36ms, limit: 3500us)
+Whenever 109 occurs then 101 occurs within 0ms, 3500us at observer platon_ros
+
+// Faulty ROS cluster -> core_total: tighter latency (max in 30s: 5.40ms, limit: 4500us)
+Whenever 107 occurs then 108 occurs within 0ms, 4500us at observer platon_ros
+

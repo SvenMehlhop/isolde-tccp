@@ -1,0 +1,17 @@
+SystemC/TCCP/simulation_trace.vcd
+SystemC/TCCP/debug.log
+.vscode/c_cpp_properties.json
+.vscode/settings.json
+SystemC/TCCP/main
+debug.log
+log.txt
+SystemC/TCCP/main
+SystemC/TCCP/make.log
+make.log
+SystemC/TCCP/.gdb_history
+TCCP-CO/build/*
+SystemC/TCCP/sim_completed_output.txt
+SystemC/TCCP/sim_stdout.txt
+SystemC/TCCP/sim_output.log
+SystemC/TCCP/build/main
+SystemC/TCCP/build/main.o

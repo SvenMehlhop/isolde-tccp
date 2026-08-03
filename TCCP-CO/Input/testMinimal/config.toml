@@ -1,0 +1,13 @@
+[main]
+contract="contracts.txt"
+output="testMinimal"
+freq="150MHz"
+[[observer]]
+id=0
+name="ITI"
+[[observer]]
+id=1
+name="TIP"
+[[observer]]
+id=2
+name="CAM"

@@ -1,0 +1,28 @@
+# Testbench Activation
+ITI_ACTIVE=true
+TIP_ACTIVE=true
+CAM_ACTIVE=true
+ROS_ACTIVE=false
+PLATON_HW_ACTIVE=false
+
+# Trace Files
+ITI_DASM_FILE=../TestbenchInput/ITI-test/trace_hart_0.dasm
+ITI_TRACE_FILE=../TestbenchInput/ITI-test/iti.trace
+TIP_TRACE_FILE=../TestbenchInput/tip/tip_port_0_signals_dump.txt
+ROS_TRACE_FILE=../TestbenchInput/evalStreet/time_model.json
+
+# Contracts
+CONTRACT_FILE=../TCCP-CO/Output/Manual/contracts.csv
+#CONTRACT_FILE=../TCCP-CO/Output/FDL/contracts.csv
+
+# Clocks
+# Format: period (ns), duty_cycle, start_time (ns), initial_state (true/false)
+CLOCK_TCCP=1,0.5,120,false
+CLOCK_DPRAM=1,0.5,10,false
+CLOCK_ITI=2,0.5,950,false
+CLOCK_TIP=2,0.5,950,false
+CLOCK_CAM=20,0.5,950,false
+CLOCK_ROS=100,0.1,95000000,false
+#CLOCK_ROS=100,0.1,0,false
+CLOCK_PLATON_HW=100,0.1,95000000,false
+#CLOCK_PLATON_HW=100,0.1,0,false

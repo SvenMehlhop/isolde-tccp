@@ -1,0 +1,10 @@
+//Type Periodic
+Event 0x80000018 occurs every 5ns, 20ns at observer ITI
+//Type Reaction
+Whenever 0x80000028 occurs then 0x80000030 occurs within 4ns, 16ns at observer ITI
+//Type Aging
+Whenever 0x80000030 occurs then 0x80000018 has occurred 4ns, 12ns before at observer ITI
+//Type TSBC time
+Value is within 1, 1023 at timepoint 3000ns, 3100ns at observer CAM
+//Type TSBC PC
+Value is within 1, 14 from PC 700 until 900 at observer CAM
